@@ -11,4 +11,4 @@
 ### Before you start refactoring
 
 - Make sure you have a solid suite of tests 
-- These tests must be self-checking ~~~~
+- These tests must be self-checking
