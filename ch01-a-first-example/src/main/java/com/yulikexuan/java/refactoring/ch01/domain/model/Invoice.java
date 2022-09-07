@@ -22,7 +22,7 @@ public class Invoice {
     @NonNull
     private List<Performance> performances = Lists.newArrayList();
 
-    public List<Performance> getPerformance() {
+    public List<Performance> getPerformances() {
         return ImmutableList.copyOf(this.performances);
     }
 

@@ -24,4 +24,9 @@ public class LoadingResourceCfg {
         return ResourceReader.readFileToString("ExpectedStmt.txt");
     }
 
+    @Bean
+    public String expectedHtmlStmt() {
+        return ResourceReader.readFileToString("ExpectedHtmlStmt.txt");
+    }
+
 }

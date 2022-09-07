@@ -30,6 +30,7 @@
         <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
         <error-prone.version>2.15.0</error-prone.version>
         <guava.version>31.1-jre</guava.version>
+        <mutability-detector.version>0.10.6</mutability-detector.version>
     </properties>
 
     <dependencyManagement>
@@ -40,6 +41,12 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mutabilitydetector</groupId>
+                <artifactId>MutabilityDetector</artifactId>
+                <version>${mutability-detector.version}</version>
             </dependency>
 
         </dependencies>
