@@ -4,7 +4,7 @@ package com.yulikexuan.java.refactoring.ch01.config;
 import com.yulikexuan.java.refactoring.ch01.domain.model.Invoice;
 import com.yulikexuan.java.refactoring.ch01.domain.model.Performance;
 import com.yulikexuan.java.refactoring.ch01.domain.model.Play;
-import com.yulikexuan.java.refactoring.ch01.domain.model.PlayRepository;
+import com.yulikexuan.java.refactoring.ch01.domain.repository.PlayRepositoryImpl;
 import com.yulikexuan.java.refactoring.json.JsonObjectConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 public class JsonCfg {
 
     @Bean
-    JsonObjectConverter<PlayRepository> playRepositoryJsonConverter() {
-        return JsonObjectConverter.of(PlayRepository.class);
+    JsonObjectConverter<PlayRepositoryImpl> playRepositoryJsonConverter() {
+        return JsonObjectConverter.of(PlayRepositoryImpl.class);
     }
 
     @Bean

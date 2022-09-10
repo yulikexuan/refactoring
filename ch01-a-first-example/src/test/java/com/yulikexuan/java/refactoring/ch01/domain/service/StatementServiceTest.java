@@ -1,19 +1,22 @@
 package com.yulikexuan.java.refactoring.ch01.domain.service;
 
 
-import com.yulikexuan.java.refactoring.ch01.config.DomainServiceCfg;
 import com.yulikexuan.java.refactoring.ch01.config.JsonCfg;
 import com.yulikexuan.java.refactoring.ch01.config.LoadingResourceCfg;
 import com.yulikexuan.java.refactoring.ch01.domain.model.*;
+import com.yulikexuan.java.refactoring.ch01.domain.repository.PlayRepository;
+import com.yulikexuan.java.refactoring.ch01.domain.repository.PlayRepositoryImpl;
 import com.yulikexuan.java.refactoring.json.JsonObjectConverter;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.mutabilitydetector.unittesting.AllowedReason;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.util.StopWatch;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,14 +24,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
+import static org.mutabilitydetector.unittesting.MutabilityAssert.assertInstancesOf;
+import static org.mutabilitydetector.unittesting.MutabilityMatchers.areImmutable;
 
 
 // @ExtendWith(MockitoExtension.class)
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {
-        JsonCfg.class,
-        LoadingResourceCfg.class,
-        DomainServiceCfg.class })
+@ContextConfiguration(classes = { JsonCfg.class, LoadingResourceCfg.class })
 @DisplayName("Test StatementService - ")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class StatementServiceTest {
@@ -43,10 +45,10 @@ class StatementServiceTest {
     private String expectedStmt;
 
     @Autowired
-    private StatementService statementService;
+    private String expectedHtmlStmt;
 
     @Autowired
-    private JsonObjectConverter<PlayRepository> playRepositoryJsonConverter;
+    private JsonObjectConverter<PlayRepositoryImpl> playRepositoryJsonConverter;
 
     @Autowired
     private JsonObjectConverter<Play> playJsonObjectConverter;
@@ -66,34 +68,60 @@ class StatementServiceTest {
 
     @Nested
     @DisplayName("Test StatementServiceImpl - ")
-    class StatementServiceImplTest {
+    class MultiStatementsServiceTest {
+
+        private StatementService plainTextStmtService;
+        private StatementService htmlStmtService;
 
         private PlayRepository playRepository;
 
         private Invoice invoice;
 
+        private InvoiceDto invoiceDto;
+
         @BeforeEach
         void setUp() {
+
             this.invoice = invoiceJsonConverter
                     .toObject(invoiceJsonString)
                     .get();
 
-            playRepository = playRepositoryJsonConverter
+            this.playRepository = playRepositoryJsonConverter
                     .toObject(playsJsonString)
                     .get();
+
+            this.invoiceDto = StatementService.convertInvoiceToDto(
+                    this.invoice, playRepository);
+
+            plainTextStmtService = StatementService.plainTextStatementService(
+                    this.playRepository);
+
+            htmlStmtService = StatementService.htmlStatementService(
+                    this.playRepository);
         }
 
         @Test
-        void able_To_Print_Invoice_Statement() {
+        void able_To_Print_Plain_Text_Invoice_Statement() {
 
             // Given
 
             // When
-            String stmt = statementService.getStatement(
-                    this.invoice, this.playRepository);
+            String stmt = plainTextStmtService.getStatement(this.invoiceDto);
 
             // Then
             assertThat(stmt).isEqualTo(expectedStmt);
+        }
+
+        @Test
+        void able_To_Print_HTML_Invoice_Statement() {
+
+            // Given
+
+            // When
+            String stmt = htmlStmtService.getStatement(this.invoiceDto);
+
+            // Then
+            assertThat(stmt).isEqualTo(expectedHtmlStmt);
         }
 
     }// End of class StatementServiceImplTest
@@ -170,6 +198,12 @@ class StatementServiceTest {
         }
 
         @Test
+        void dto_Of_Performance_Should_Be_Immutable() {
+            assertInstancesOf(PerformanceDto.class, areImmutable(),
+                    AllowedReason.provided(PlayType.class).isAlsoImmutable());
+        }
+
+        @Test
         void from_Performance_To_Json() {
 
             // Given
@@ -219,6 +253,12 @@ class StatementServiceTest {
 
         @BeforeAll
         static void beforeAll() {
+        }
+
+        @Test
+        void dto_Of_Invoice_Should_Be_Immutable() {
+            assertInstancesOf(InvoiceDto.class, areImmutable(),
+                    AllowedReason.provided(PerformanceDto.class).isAlsoImmutable());
         }
 
         @Test
