@@ -38,6 +38,12 @@
         <dependencies>
 
             <dependency>
+                <groupId>com.yulikexuan.java</groupId>
+                <artifactId>common</artifactId>
+                <version>2022.03-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
