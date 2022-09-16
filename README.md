@@ -9,4 +9,12 @@
 
 ## [Chapter 3 - Bad Smells in Code](doc/README_chap_3.md) 
 
+
 ## [Chapter 4 - Building Tests](doc/README_chap_4.md)
+
+
+---
+
+## [Extract Function](extract-function/README.md)
+
+
