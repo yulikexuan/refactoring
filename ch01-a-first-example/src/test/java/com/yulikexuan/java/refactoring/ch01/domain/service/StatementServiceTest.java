@@ -16,7 +16,6 @@ import org.mutabilitydetector.unittesting.AllowedReason;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.util.StopWatch;
 
 import java.util.List;
 import java.util.Optional;

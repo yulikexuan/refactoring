@@ -1,0 +1,11 @@
+{
+  "customer":"imHouVO",
+  "orders":[
+    {"amount":97},
+    {"amount":90},
+    {"amount":22},
+    {"amount":91},
+    {"amount":63}
+  ],
+  "dueDate":"2022-09-16 10:25:52-04:00"
+}

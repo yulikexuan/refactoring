@@ -162,6 +162,7 @@
     <modules>
         <module>ch01-a-first-example</module>
         <module>common</module>
+        <module>extract-function</module>
     </modules>
 
 </project>
