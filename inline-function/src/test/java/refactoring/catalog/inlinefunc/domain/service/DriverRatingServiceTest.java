@@ -4,10 +4,8 @@ package refactoring.catalog.inlinefunc.domain.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import refactoring.catalog.inlinefunc.domain.model.Driver;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
