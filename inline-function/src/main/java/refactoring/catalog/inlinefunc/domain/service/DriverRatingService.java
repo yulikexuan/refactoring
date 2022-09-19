@@ -1,17 +1,18 @@
 package refactoring.catalog.inlinefunc.domain.service;
 
 
+import lombok.NonNull;
 import refactoring.catalog.inlinefunc.domain.model.Driver;
 
 
 public class DriverRatingService {
 
-    public int ratingDriver(Driver driver) {
-        return moreThanFiveLateDeliveries(driver) ? 2 : 1;
+    public int ratingDriver(@NonNull final Driver driver) {
+        return driver.getNumberOfLateDeliveries() > 5 ? 2 : 1;
     }
 
-    private boolean moreThanFiveLateDeliveries(Driver driver) {
-        return driver.getNumberOfLateDeliveries() > 5;
-    }
+//    private boolean moreThanFiveLateDeliveries(@NonNull final Driver driver) {
+//        return driver.getNumberOfLateDeliveries() > 5;
+//    }
 
 }
