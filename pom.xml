@@ -163,6 +163,7 @@
         <module>ch01-a-first-example</module>
         <module>common</module>
         <module>extract-function</module>
+        <module>inline-function</module>
     </modules>
 
 </project>
