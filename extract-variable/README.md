@@ -33,3 +33,12 @@
 - ### Replace the Original Expression with the New Variable
 
 - ### Test
+
+
+---
+## [Inline Variable](https://memberservices.informit.com/my_account/webedition/9780135425664/html/inlinevariable.html)
+
+### Motivation
+
+- #### Variable name for expression doesn't really communicate more than the expression itself
+- #### A variable gets in the way of refactoring the neighboring code
