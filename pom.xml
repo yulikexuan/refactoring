@@ -164,6 +164,7 @@
         <module>common</module>
         <module>extract-function</module>
         <module>inline-function</module>
+        <module>extract-variable</module>
     </modules>
 
 </project>
