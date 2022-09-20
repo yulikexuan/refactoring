@@ -12,11 +12,11 @@ import static org.mutabilitydetector.unittesting.MutabilityMatchers.areImmutable
 
 @DisplayName("Test StatementService - ")
 @DisplayNameGeneration(ReplaceUnderscores.class)
-class OrderTest {
+class OrderDtoTest {
 
     @Test
-    void class_Order_Should_Be_Immutable() {
-        assertInstancesOf(Order.class, areImmutable());
+    void class_OrderDto_Should_Be_Immutable() {
+        assertInstancesOf(OrderDto.class, areImmutable());
     }
 
 }

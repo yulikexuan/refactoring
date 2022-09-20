@@ -1,14 +1,17 @@
 package refactoring.catalog.extractvar.domain.model;
 
 
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
-@Value
-@RequiredArgsConstructor(staticName = "of")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor(staticName = "of")
 public class Order {
 
     long quantity;
     long itemPrice;
+
 }
