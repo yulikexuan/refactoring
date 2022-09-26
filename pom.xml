@@ -165,6 +165,7 @@
         <module>extract-function</module>
         <module>inline-function</module>
         <module>extract-variable</module>
+        <module>change-function-declaration</module>
     </modules>
 
 </project>
