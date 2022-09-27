@@ -1,8 +1,8 @@
 package com.yulikexuan.java.refactoring.ch01.domain.service;
 
 
-import com.yulikexuan.java.refactoring.ch01.config.JsonCfg;
-import com.yulikexuan.java.refactoring.ch01.config.LoadingResourceCfg;
+import com.yulikexuan.java.refactoring.ch01.config.JsonObjectConvertersCfg;
+import com.yulikexuan.java.refactoring.ch01.config.JsonFileResourceLoadingCfg;
 import com.yulikexuan.java.refactoring.ch01.domain.model.*;
 import com.yulikexuan.java.refactoring.ch01.domain.repository.PlayRepository;
 import com.yulikexuan.java.refactoring.ch01.domain.repository.PlayRepositoryImpl;
@@ -29,7 +29,7 @@ import static org.mutabilitydetector.unittesting.MutabilityMatchers.areImmutable
 
 // @ExtendWith(MockitoExtension.class)
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { JsonCfg.class, LoadingResourceCfg.class })
+@ContextConfiguration(classes = { JsonObjectConvertersCfg.class, JsonFileResourceLoadingCfg.class })
 @DisplayName("Test StatementService - ")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class StatementServiceTest {

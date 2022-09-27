@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-public class JsonCfg {
+public class JsonObjectConvertersCfg {
 
     @Bean
     JsonObjectConverter<PlayRepositoryImpl> playRepositoryJsonConverter() {

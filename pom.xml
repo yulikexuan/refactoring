@@ -166,6 +166,7 @@
         <module>inline-function</module>
         <module>extract-variable</module>
         <module>change-function-declaration</module>
+        <module>introduce-parameter-object</module>
     </modules>
 
 </project>
