@@ -7,6 +7,7 @@ import com.yulikexuan.java.refactoring.json.JsonObjectConverter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -15,13 +16,15 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import refactoring.catalog.parameter.config.JsonFileResourceLoadingCfg;
 import refactoring.catalog.parameter.config.JsonObjectConvertersCfg;
-import refactoring.catalog.parameter.domain.model.WeatherReading;
+import refactoring.catalog.parameter.domain.model.NumberRange;
+import refactoring.catalog.parameter.domain.model.WeatherReadingDto;
 import refactoring.catalog.parameter.domain.model.WeatherStation;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
+import static org.mutabilitydetector.unittesting.MutabilityAssert.assertImmutable;
 
 
 @ExtendWith(SpringExtension.class)
@@ -56,12 +59,12 @@ class TemperatureRangeServiceTest {
         // Given
 
         // When
-        final List<WeatherReading> outsideReadings =
+        final List<WeatherReadingDto> outsideReadings =
                 this.tempRangeService.readingsOutsideRange(
-                        this.weatherStation, min, max);
+                        this.weatherStation, NumberRange.of(min, max));
 
-        final List<WeatherReading> insideReadings =
-                this.weatherStation.getReadings()
+        final List<WeatherReadingDto> insideReadings =
+                this.weatherStation.weatherReadings()
                         .stream()
                         .filter(r -> !outsideReadings.contains(r))
                         .collect(ImmutableList.toImmutableList());
@@ -77,11 +80,20 @@ class TemperatureRangeServiceTest {
                 .count();
         assertThat(wrongInsideReadings).isZero();
 
-        List<WeatherReading> recombinedReadings = Lists.newArrayList();
+        List<WeatherReadingDto> recombinedReadings = Lists.newArrayList();
         recombinedReadings.addAll(outsideReadings);
         recombinedReadings.addAll(insideReadings);
         assertThat(recombinedReadings).containsExactlyInAnyOrderElementsOf(
-                weatherStation.getReadings());
+                weatherStation.weatherReadings());
+    }
+
+    @Test
+    void the_DTO_Of_WeatherReading_Should_Be_Immutable() {
+
+        // Given
+
+        // When
+        assertImmutable(WeatherReadingDto.class);
     }
 
 }

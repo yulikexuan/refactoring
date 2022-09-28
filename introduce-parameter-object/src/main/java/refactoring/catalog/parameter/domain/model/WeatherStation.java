@@ -1,6 +1,7 @@
 package refactoring.catalog.parameter.domain.model;
 
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Data
@@ -25,6 +27,12 @@ public class WeatherStation {
 
     public void setReadings(@NonNull final List<WeatherReading> readings) {
         this.readings = List.copyOf(readings);
+    }
+
+    public List<WeatherReadingDto> weatherReadings() {
+        return this.readings.stream()
+                .map(WeatherReadingDto::of)
+                .collect(ImmutableList.toImmutableList());
     }
 
 }
