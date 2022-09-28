@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-public class LoadingResourceCfg {
+public class JsonFileResourceLoadingCfg {
 
     @Bean
     public String invoiceJsonString() {
