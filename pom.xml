@@ -167,6 +167,7 @@
         <module>extract-variable</module>
         <module>change-function-declaration</module>
         <module>introduce-parameter-object</module>
+        <module>combine-functions-into-class</module>
     </modules>
 
 </project>
