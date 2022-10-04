@@ -168,6 +168,8 @@
         <module>change-function-declaration</module>
         <module>introduce-parameter-object</module>
         <module>combine-functions-into-class</module>
+        <module>combine-functions-into-transform</module>
+        <module>split-phase</module>
     </modules>
 
 </project>
