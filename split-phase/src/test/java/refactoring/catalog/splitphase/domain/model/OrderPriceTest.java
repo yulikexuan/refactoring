@@ -1,34 +1,32 @@
-package refactoring.catalog.splitphase.domain.service;
+package refactoring.catalog.splitphase.domain.model;
 
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.junit.jupiter.MockitoExtension;
-import refactoring.catalog.splitphase.domain.model.Product;
-import refactoring.catalog.splitphase.domain.model.ShippingMethod;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import static org.mutabilitydetector.unittesting.MutabilityAssert.assertImmutable;
 
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("Test OrderPriceService Implementation - ")
+@DisplayName("Test OrderPrice Implementation - ")
 @DisplayNameGeneration(ReplaceUnderscores.class)
-class OrderPriceServiceTest {
+class OrderPriceTest {
 
-    private OrderPriceService orderPriceService;
 
     @BeforeEach
     void setUp() {
         assertImmutable(Product.class);
+        assertImmutable(ProductPriceImpl.class);
         assertImmutable(ShippingMethod.class);
-        this.orderPriceService = new OrderPriceServiceImpl();
+        assertImmutable(Order.class);
+        assertImmutable(OrderPriceImpl.class);
     }
 
     @ParameterizedTest
@@ -47,11 +45,10 @@ class OrderPriceServiceTest {
                 shippingDiscountThreshold, shippingDiscountFee, feePerShippingCase);
 
         // When
-        int finalPrice = this.orderPriceService.priceOrder(
-                product, quantity, shippingMethod);
+        OrderPrice finalOrderPrice = OrderPrice.of(product, quantity, shippingMethod);
 
         // Then
-        assertThat(finalPrice).isEqualTo(expectedFinalPrice);
+        assertThat(finalOrderPrice.price()).isEqualTo(expectedFinalPrice);
     }
 
 }///:~

@@ -1,0 +1,26 @@
+[
+    {
+        "price": 123,
+        "status": "READY"
+    },
+    {
+        "price": 321,
+        "status": "PAID"
+    },
+    {
+        "price": 2345,
+        "status": "READY"
+    },
+    {
+        "price": 5432,
+        "status": "READY"
+    },
+    {
+        "price": 345,
+        "status": "PAID"
+    },
+    {
+        "price": 543,
+        "status": "READY"
+    }
+]
