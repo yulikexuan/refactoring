@@ -170,6 +170,7 @@
         <module>combine-functions-into-class</module>
         <module>combine-functions-into-transform</module>
         <module>split-phase</module>
+        <module>encapsulate-record</module>
     </modules>
 
 </project>
