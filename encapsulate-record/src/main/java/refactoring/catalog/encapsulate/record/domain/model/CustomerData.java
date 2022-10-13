@@ -22,6 +22,6 @@ public class CustomerData {
 
     String id;
 
-    Map<String, Map<String, Integer>> usages;
+    Map<String, Usage> usages;
 
 }///:~

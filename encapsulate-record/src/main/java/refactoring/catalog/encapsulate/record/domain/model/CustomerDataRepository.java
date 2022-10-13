@@ -26,4 +26,20 @@ public class CustomerDataRepository {
         return Optional.ofNullable(this.allData.get(id));
     }
 
+    public int usage(@NonNull final String customerId,
+                     @NonNull final String year,
+                     @NonNull final String month) {
+
+        return  this.allData.get(customerId).usages().get(year).amtByMonth(month);
+    }
+
+    public void usage(
+            @NonNull final String customerId,
+            @NonNull final String year,
+            @NonNull final String month,
+            final int amount) {
+
+        this.allData.get(customerId).usages().get(year).amtByMonth(month, amount);
+    }
+
 }

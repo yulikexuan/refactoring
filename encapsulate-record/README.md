@@ -42,13 +42,16 @@
   - Test after each change 
 
 > get at something: to learn or find out something
-> - The truth is sometimes difficult to get at.
+> - The truth is sometimes difficult to get at 
 
 ### For very Complex Record, such as One with a nested structure 
 
 - #### Focus on Clients that Update the Data First
   - Then Consider Returning a Copy or Read-Only Proxy of the Data for Clients 
     - that only read the data
+  - Concentrate on the updates 
+    - Getting them visible and gathered in a single place
+      - is the most important part of the encapsulation 
 
 ### Remove the Class's Raw Data Accessor
 
