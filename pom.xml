@@ -171,6 +171,7 @@
         <module>combine-functions-into-transform</module>
         <module>split-phase</module>
         <module>encapsulate-record</module>
+        <module>encapsulate-collection</module>
     </modules>
 
 </project>

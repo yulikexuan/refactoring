@@ -5,6 +5,7 @@ import com.yulikexuan.java.refactoring.json.JsonObjectConverter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -54,6 +55,11 @@ class SplittingCommandLineAppTest {
 
         // Then
         assertThat(actualAmt).isEqualTo(expectAmt);
+    }
+
+    @Test
+    void test_Class_Loaders() {
+
     }
 
 }///:~
