@@ -172,6 +172,7 @@
         <module>split-phase</module>
         <module>encapsulate-record</module>
         <module>encapsulate-collection</module>
+        <module>replace-primitive-with-object</module>
     </modules>
 
 </project>
