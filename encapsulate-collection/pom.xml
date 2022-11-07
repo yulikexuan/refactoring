@@ -13,15 +13,14 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>common</artifactId>
+    <artifactId>encapsulate-collection</artifactId>
     <packaging>jar</packaging>
-    <name>common</name>
 
     <dependencies>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-json</artifactId>
+            <groupId>com.yulikexuan.java</groupId>
+            <artifactId>common</artifactId>
         </dependency>
 
         <dependency>
