@@ -18,6 +18,11 @@ public sealed interface Course {
     static Course of(@NonNull final String name, final boolean isAdvanced) {
         return CourseImpl.of(name, isAdvanced);
     }
+
+    static Course basic(@NonNull final String name) {
+        return CourseImpl.of(name, false);
+    }
+
 }
 
 @Value

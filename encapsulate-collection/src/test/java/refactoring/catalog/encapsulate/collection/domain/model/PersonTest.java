@@ -50,11 +50,17 @@ class PersonTest {
 
         int initialCourseSize = this.courses.size();
 
+        // When
         this.person = Person.of(personName);
         this.person.courses(this.courses);
 
+        // Then
+        assertThat(this.courses).isNotSameAs(this.person.courses());
+        assertThat(this.courses).containsExactlyElementsOf(this.person.courses());
+        assertThat(this.person.numberOfAdvancedCourses()).isEqualTo(2);
+
         // When
-        this.person.courses().add(newCourse);
+        this.person.addCourse(newCourse);
 
         // Then
         assertThat(this.person.name()).isEqualTo(personName);
@@ -64,10 +70,38 @@ class PersonTest {
                 .isEqualTo(initialCourseSize + 1);
 
         // When
-        this.person.courses().remove(newCourse);
+        boolean removed = this.person.removeCourse(newCourse);
 
         // Then
+        assertThat(removed).isTrue();
         assertThat(this.person.courses().size()).isEqualTo(initialCourseSize);
+    }
+
+    @Test
+    void able_To_Assign_Basic_Courses_To_Person() {
+
+        // Given
+        String personName = RandomStringUtils.randomAlphabetic(7);
+
+        List<String> basicCourseNames = List.of(
+                RandomStringUtils.randomAlphanumeric(7),
+                RandomStringUtils.randomAlphanumeric(7),
+                RandomStringUtils.randomAlphanumeric(7));
+
+        this.person = Person.of(personName);
+        this.person.courses(this.courses);
+
+        // When
+        this.person.assignBasicCourses(basicCourseNames);
+
+        // Then
+        assertThat(this.person.numberOfCourses()).isEqualTo(
+                this.courses.size() + basicCourseNames.size());
+
+        long added = basicCourseNames.stream().filter(n -> person.contains(n))
+                .count();
+
+        assertThat(added).isEqualTo(basicCourseNames.size());
     }
 
 }///:~
