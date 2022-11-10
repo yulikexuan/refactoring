@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import refactoring.catalog.replace.primitive.domain.model.Order;
+import refactoring.catalog.replace.primitive.domain.model.Priority;
 
 import java.util.List;
 import java.util.UUID;
@@ -28,12 +29,12 @@ class OrdersServiceTest {
     @BeforeEach
     void setUp() {
         this.orders = List.of(
-                Order.of(UUID.randomUUID().toString(), "normal"),
-                Order.of(UUID.randomUUID().toString(), "high"),
-                Order.of(UUID.randomUUID().toString(), "high"),
-                Order.of(UUID.randomUUID().toString(), "medium"),
-                Order.of(UUID.randomUUID().toString(), "rush"),
-                Order.of(UUID.randomUUID().toString(), "low"));
+                Order.of(UUID.randomUUID().toString(), Priority.NORMAL),
+                Order.of(UUID.randomUUID().toString(), Priority.HIGH),
+                Order.of(UUID.randomUUID().toString(), Priority.HIGH),
+                Order.of(UUID.randomUUID().toString(), Priority.NORMAL),
+                Order.of(UUID.randomUUID().toString(), Priority.RUSH),
+                Order.of(UUID.randomUUID().toString(), Priority.LOW));
     }
 
     @Test

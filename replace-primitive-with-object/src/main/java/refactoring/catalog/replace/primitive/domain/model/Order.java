@@ -16,6 +16,6 @@ public class Order {
 
     String id;
 
-    String priority;
+    Priority priority;
 
 }///:~
