@@ -9,13 +9,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.3</version>
+        <version>2.7.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.yulikexuan.java</groupId>
     <artifactId>refactoring</artifactId>
-    <version>2022.03-SNAPSHOT</version>
+    <version>2022.04-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>refactoring</name>
 
@@ -40,7 +40,7 @@
             <dependency>
                 <groupId>com.yulikexuan.java</groupId>
                 <artifactId>common</artifactId>
-                <version>2022.03-SNAPSHOT</version>
+                <version>2022.04-SNAPSHOT</version>
             </dependency>
 
             <dependency>
@@ -173,6 +173,7 @@
         <module>encapsulate-record</module>
         <module>encapsulate-collection</module>
         <module>replace-primitive-with-object</module>
+        <module>replace-temp-with-query</module>
     </modules>
 
 </project>
