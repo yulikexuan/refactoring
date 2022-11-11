@@ -9,7 +9,7 @@
     <parent>
         <groupId>com.yulikexuan.java</groupId>
         <artifactId>refactoring</artifactId>
-        <version>2022.03-SNAPSHOT</version>
+        <version>2022.04-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
