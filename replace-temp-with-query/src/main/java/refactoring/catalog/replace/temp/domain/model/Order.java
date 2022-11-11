@@ -24,17 +24,18 @@ public class Order {
 
     int quantity;
 
-    long price() {
+    public long price() {
+        return basePrice() * discountFactor() / 100;
+    }
 
-        long basePrice = quantity * item.price();
+    long basePrice() {
+        return quantity * item.price();
+    }
 
-        int discountFactor = DEFAULT_DISCOUNT_FACTOR;
-
-        if (basePrice > BASE_PRICE_THRESHOLD) {
-            discountFactor -= DISCOUNT_FACTOR_UNIT;
-        }
-
-        return basePrice * discountFactor / 100;
+    int discountFactor() {
+        return (basePrice() > BASE_PRICE_THRESHOLD) ?
+                DEFAULT_DISCOUNT_FACTOR - DISCOUNT_FACTOR_UNIT :
+                DEFAULT_DISCOUNT_FACTOR;
     }
 
 }///:~

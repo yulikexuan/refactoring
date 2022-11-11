@@ -8,6 +8,7 @@
         <artifactId>refactoring</artifactId>
         <groupId>com.yulikexuan.java</groupId>
         <version>2022.04-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
