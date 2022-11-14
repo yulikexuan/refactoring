@@ -176,6 +176,7 @@
         <module>replace-temp-with-query</module>
         <module>extract-class</module>
         <module>inline-class</module>
+        <module>hide-delegate</module>
     </modules>
 
 </project>
