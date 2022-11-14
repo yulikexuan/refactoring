@@ -15,17 +15,12 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor(staticName = "of")
 public class Person {
 
-    static final String TELEPHONE_NUMBER_TEMPLATE = "%s1-%s2";
-
     @NonNull String name;
 
-    @NonNull String officeAreaCode;
-
-    @NonNull String officeNumber;
+    @NonNull TelephoneNumber officeTelephoneNumber;
 
     public String officeTelephoneNumber() {
-        return String.format(TELEPHONE_NUMBER_TEMPLATE,
-                this.officeAreaCode, this.officeNumber);
+        return this.officeTelephoneNumber.toString();
     }
 
 }///:~

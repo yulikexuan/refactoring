@@ -7,9 +7,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
@@ -22,22 +22,15 @@ import static org.mutabilitydetector.unittesting.MutabilityAssert.assertImmutabl
 class PersonTest {
 
     private String name;
-    private String areaCode;
-    private String telNumber;
 
-    private ThreadLocalRandom random;
+    private TelephoneNumber telephoneNumber;
 
     private Person person;
 
     @BeforeEach
     void setUp() {
-        this.random = ThreadLocalRandom.current();
         this.name = RandomStringUtils.randomAlphabetic(7);
-        this.areaCode = Integer.toString(
-                this.random.nextInt(100, 1000));
-        this.telNumber = Long.toString(
-                this.random.nextLong(1000000, 10000000));
-        this.person = Person.of(this.name, this.areaCode, this.telNumber);
+
     }
 
     @Test
@@ -45,18 +38,23 @@ class PersonTest {
         assertImmutable(Person.class);
     }
 
-    @Test
-    void person_Has_Office_Tel_Number() {
+    @ParameterizedTest
+    @CsvSource({"514, 1234567, 514-1234567",
+            "438, 7654321, 438-7654321",
+            "123, 0123456, 123-0123456",
+            "231, 1012345, 231-1012345"})
+    void person_Has_Office_Tel_Number(
+            String areaCode, String telNumber, String expectedOfficeTelNumber) {
 
         // Given
-        String expectedOfficeTelNumber = String.format(
-                Person.TELEPHONE_NUMBER_TEMPLATE, this.areaCode, this.telNumber);
+        TelephoneNumber tn = TelephoneNumber.of(areaCode, telNumber);
+        this.person = Person.of(name, tn);
 
         // When
-        String actualOfficeTelNumber = this.person.officeTelephoneNumber();
+        String actualOfficeTelNum = this.person.officeTelephoneNumber();
 
         // Then
-        assertThat(actualOfficeTelNumber).isEqualTo(expectedOfficeTelNumber);
+        assertThat(actualOfficeTelNum).isEqualTo(expectedOfficeTelNumber);
     }
 
 }///:~
