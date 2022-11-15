@@ -177,6 +177,7 @@
         <module>extract-class</module>
         <module>inline-class</module>
         <module>hide-delegate</module>
+        <module>substitute-algorithm</module>
     </modules>
 
 </project>
