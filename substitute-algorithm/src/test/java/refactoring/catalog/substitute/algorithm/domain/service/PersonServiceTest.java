@@ -10,6 +10,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import refactoring.catalog.substitute.algorithm.domain.model.Person;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 
@@ -27,7 +29,7 @@ class PersonServiceTest {
     }
 
     @Test
-    void able_To_Find_Out_Candidate() {
+    void able_To_Find_Out_Candidate_From_People() {
 
         // Given
         Person[] people_1 = {
@@ -59,16 +61,16 @@ class PersonServiceTest {
         };
 
         // When
-        Person foundPerson_1 = this.personService.findPerson(people_1);
-        Person foundPerson_2 = this.personService.findPerson(people_2);
-        Person foundPerson_3 = this.personService.findPerson(people_3);
-        Person foundPerson_4 = this.personService.findPerson(people_4);
+        Person candidate_1 = this.personService.findCandidate(people_1).get();
+        Person candidate_2 = this.personService.findCandidate(people_2).get();
+        Person candidate_3 = this.personService.findCandidate(people_3).get();
+        Optional<Person> candidateOpt = this.personService.findCandidate(people_4);
 
         // Then
-        assertThat(foundPerson_1.name()).isEqualTo("Don");
-        assertThat(foundPerson_2.name()).isEqualTo("John");
-        assertThat(foundPerson_3.name()).isEqualTo("Kent");
-        assertThat(foundPerson_4).isNull();
+        assertThat(candidate_1.name()).isEqualTo("Don");
+        assertThat(candidate_2.name()).isEqualTo("John");
+        assertThat(candidate_3.name()).isEqualTo("Kent");
+        assertThat(candidateOpt).isEmpty();
     }
 
 }///:~

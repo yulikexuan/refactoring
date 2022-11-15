@@ -4,29 +4,27 @@
 package refactoring.catalog.substitute.algorithm.domain.service;
 
 
+import lombok.NonNull;
 import refactoring.catalog.substitute.algorithm.domain.model.Person;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 
 public class PersonService {
 
-    Person findPerson(Person[] people) {
+    static final List<String> CANDIDATE = List.of("Don", "John", "Kent");
 
-        for (int i = 0; i < people.length; i++) {
+    Optional<Person> findCandidate(@NonNull final Person[] people) {
 
-            if (people[i].name().equals("Don")) {
-                return people[i];
-            }
+        return Arrays.stream(people)
+                .filter(this::isCandidate)
+                .findFirst();
+    }
 
-            if (people[i].name().equals("John")) {
-                return people[i];
-            }
-
-            if (people[i].name().equals("Kent")) {
-                return people[i];
-            }
-        }
-
-        return null;
+    private boolean isCandidate(@NonNull final Person person) {
+        return CANDIDATE.contains(person.name());
     }
 
 }///:~
