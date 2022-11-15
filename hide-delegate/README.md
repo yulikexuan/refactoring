@@ -1,10 +1,10 @@
-# Hide Delegate
+# Hide Delegate & Remove Middle Man
 
 
 ## Resources
 
 - [Hide Delegate](https://memberservices.informit.com/my_account/webedition/9780135425664/html/hidedelegate.html)
-
+- [Remove Middle Man](https://memberservices.informit.com/my_account/webedition/9780135425664/html/removemiddleman.html)
 
 ---
 ## Motivation
@@ -20,6 +20,9 @@
   - changes propagate to all the clients of the server that use the delegate obj
 - by placing a simple delegating method on the server that hides the delegate obj
   - the dependency of the delegate obj can be removed
+
+### Remove Middle Man is the Inverse of Hide Delegate
+- After a while, there could be too many delegate methods 
 
 
 ---
