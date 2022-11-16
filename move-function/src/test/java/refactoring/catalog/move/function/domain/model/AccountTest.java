@@ -8,12 +8,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mutabilitydetector.unittesting.AllowedReason;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
-import static org.mutabilitydetector.unittesting.MutabilityAssert.assertImmutable;
+import static org.mutabilitydetector.unittesting.MutabilityAssert.assertInstancesOf;
+import static org.mutabilitydetector.unittesting.MutabilityMatchers.areImmutable;
 import static refactoring.catalog.move.function.domain.model.Account.BASIC_CHARGE;
 
 
@@ -24,7 +25,8 @@ class AccountTest {
 
     @Test
     void class_Account_Should_Be_Immutable() {
-        assertImmutable(Account.class);
+        assertInstancesOf(Account.class, areImmutable(),
+                AllowedReason.provided(AccountType.class).isAlsoImmutable());
     }
 
     @ParameterizedTest
