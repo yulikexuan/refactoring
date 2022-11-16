@@ -178,6 +178,7 @@
         <module>inline-class</module>
         <module>hide-delegate</module>
         <module>substitute-algorithm</module>
+        <module>move-function</module>
     </modules>
 
 </project>
