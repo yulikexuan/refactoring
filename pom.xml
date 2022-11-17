@@ -179,6 +179,7 @@
         <module>hide-delegate</module>
         <module>substitute-algorithm</module>
         <module>move-function</module>
+        <module>move-field</module>
     </modules>
 
 </project>
