@@ -17,23 +17,28 @@ public class Customer {
 
     @NonNull String name;
 
-    @NonNull int discountRate;
-
     @NonNull CustomerContract contract;
 
     public static Customer newCustomer(
             @NonNull final String name, final int discountRate) {
 
-        return Customer.of(name, discountRate, CustomerContract.newContract());
+        return Customer.of(name, CustomerContract.newContract(discountRate));
     }
 
     public static Customer becomePreferred(@NonNull final Customer customer) {
-        return Customer.of(customer.name, customer.discountRate + 3,
-                customer.contract);
+
+        CustomerContract newContract = CustomerContract.applyNewDiscountRate(
+                customer.contract, customer.contract.discountRate() + 3);
+
+        return Customer.of(customer.name, newContract);
     }
 
     public long applyDiscount(final long amount) {
-        return amount - amount * this.discountRate / 100;
+        return amount - amount * this.contract.discountRate() / 100;
+    }
+
+    public int discountRate() {
+        return this.contract.discountRate();
     }
 
 }///:~

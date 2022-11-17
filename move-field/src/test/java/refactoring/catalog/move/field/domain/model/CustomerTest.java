@@ -31,11 +31,6 @@ class CustomerTest {
     }
 
     @Test
-    void class_CustomerContract_Should_Be_Immutable() {
-        assertImmutable(CustomerContract.class);
-    }
-
-    @Test
     void class_Customer_Should_Be_Immutable() {
         assertImmutable(Customer.class);
     }
