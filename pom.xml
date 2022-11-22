@@ -180,6 +180,7 @@
         <module>substitute-algorithm</module>
         <module>move-function</module>
         <module>move-field</module>
+        <module>move-statements</module>
     </modules>
 
 </project>
