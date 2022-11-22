@@ -5,6 +5,7 @@ package refactoring.catalog.move.statements.domain.model;
 
 
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import lombok.Value;
 import lombok.experimental.Accessors;
 
@@ -14,32 +15,21 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor(staticName = "of")
 public class ProfileRenderer {
 
-    static final String PHOTO_DATA_TEMPLATE = "Location: %s%nDate: %s%n";
-    static final String PHOTO_HTML_TEMPLATE = "Photo Title: %s%n%s%n";
-
     static final String PERSON_HTML_TEMPLATE =
-            "Profile%nName: %s%n-------%nPhoto: %nTitle: %s%n%s%n";
+            "Profile%nName: %s%n-------%n%s%nLocation: %s%n";
 
-    Person person;
+    static final String PHOTO_TEMPLATE2 = "Photo Title: %s%nDate: %s%n";
 
-    String emitPhotoData() {
-        return String.format(PHOTO_DATA_TEMPLATE,
-                this.person.photo().location(),
-                this.person.photo().date().toString());
-    }
-
-    String renderPhotoHtml() {
-        return String.format(PHOTO_HTML_TEMPLATE,
-                this.person.photo().title(),
-                this.emitPhotoData());
-    }
-
-    public String renderPerson() {
-
+    public String renderPerson(@NonNull final Person person) {
         return String.format(PERSON_HTML_TEMPLATE,
-                this.person.name(),
-                this.person.photo().title(),
-                this.emitPhotoData());
+                person.name(),
+                this.emitPhotoData2(person.photo()),
+                person.photo().location());
+    }
+
+    public String emitPhotoData2(@NonNull final Photo photo) {
+        return String.format(PHOTO_TEMPLATE2,
+                photo.title(), photo.date().toString());
     }
 
 }///:~

@@ -11,13 +11,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 
+import static refactoring.catalog.move.statements.domain.model.ProfileRenderer.*;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
 import static org.mutabilitydetector.unittesting.MutabilityAssert.assertImmutable;
 
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("Test refactoring.catalog.move.statements.domain.model.ProfileRenderer- ")
+@DisplayName("Test class ProfileRenderer - ")
 @DisplayNameGeneration(ReplaceUnderscores.class)
 class ProfileRendererTest {
 
@@ -46,7 +47,7 @@ class ProfileRendererTest {
         this.personName = RandomStringUtils.randomAlphabetic(5);
         this.person = Person.of(this.personName, this.photo);
 
-        this.profileRenderer = ProfileRenderer.of(this.person);
+        this.profileRenderer = ProfileRenderer.of();
     }
 
     @Test
@@ -68,42 +69,28 @@ class ProfileRendererTest {
     void able_To_Emit_Photo_Data() {
 
         // Given
-        String expectedPhotoData = String.format(
-                ProfileRenderer.PHOTO_DATA_TEMPLATE,
-                this.photo.location(), this.photo.date().toString());
+        String expectedPhotoData = String.format(PHOTO_TEMPLATE2,
+                this.photo.title(),
+                this.photo.date().toString());
 
         // When
-        String actualPhotoData = this.profileRenderer.emitPhotoData();
+        String actualPhotoData = this.profileRenderer.emitPhotoData2(this.photo);
 
         // Then
         assertThat(actualPhotoData).isEqualTo(expectedPhotoData);
     }
 
     @Test
-    void able_To_Render_Photo_In_HTML() {
-
-        // Given
-        String expectedPhotoHtml = String.format(ProfileRenderer.PHOTO_HTML_TEMPLATE,
-                this.photo.title(), this.profileRenderer.emitPhotoData());
-        // When
-        String actualPhotoHtml = this.profileRenderer.renderPhotoHtml();
-
-        // Then
-        assertThat(actualPhotoHtml).isEqualTo(expectedPhotoHtml);
-    }
-
-    @Test
     void able_To_Render_Person_Profile() {
 
         // Given
-        String expectedProfileHtml = String.format(
-                ProfileRenderer.PERSON_HTML_TEMPLATE,
+        String expectedProfileHtml = String.format(PERSON_HTML_TEMPLATE,
                 this.person.name(),
-                this.photo.title(),
-                this.profileRenderer.emitPhotoData());
+                this.profileRenderer.emitPhotoData2(this.photo),
+                this.photo.location());
 
         // When
-        String actualProfileHtml = this.profileRenderer.renderPerson();
+        String actualProfileHtml = this.profileRenderer.renderPerson(this.person);
 
         // Then
         assertThat(actualProfileHtml).isEqualTo(expectedProfileHtml);
