@@ -18,38 +18,23 @@ import javax.annotation.concurrent.ThreadSafe;
 public class OrderChargeService {
 
     private final PricingPlanFactory pricingPlanFactory;
+
     private final OrderFactory orderFactory;
 
     private final ChargeService chargeService;
 
+    private final IDiscountService discountService;
+
     public long chargeOrder() {
 
-        final PricingPlan pricingPlan = this.pricingPlanFactory.retrievePricingPlan();
+        final PricingPlan pricingPlan =
+                this.pricingPlanFactory.retrievePricingPlan();
 
         final Order order = this.orderFactory.retrieveOrder();
 
-        final long baseCharge = pricingPlan.baseCharge();
-
-        long charge = 0;
-
-        final long chargePerUnit = pricingPlan.chargePerUnit();
-
-        final int units = order.units();
-
-        long discount = 0;
-
-        charge = baseCharge + units * chargePerUnit;
-
-        int discountableUnits = Math.max(
-                (units - pricingPlan.discountThreshold()), 0);
-
-        discount = discountableUnits * pricingPlan.discountFactor() / 100;
-
-        if (order.isRepeat()) {
-            discount += 20;
-        }
-
-        charge = charge - discount;
+        long charge = pricingPlan.baseCharge() +
+                order.units() * pricingPlan.chargePerUnit() -
+                discountService.discount(pricingPlan, order);
 
         return this.chargeService.chargeOrder(charge);
     }

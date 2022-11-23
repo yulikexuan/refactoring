@@ -35,6 +35,9 @@ class OrderChargeServiceTest {
     @Mock
     private ChargeService chargeService;
 
+    @Mock
+    private IDiscountService discountService;
+
     private OrderChargeService orderChargeService;
 
     private PricingPlan pricingPlan;
@@ -44,7 +47,10 @@ class OrderChargeServiceTest {
     @BeforeEach
     void setUp() {
         this.orderChargeService = OrderChargeService.of(
-                this.pricingPlanFactory, this.orderFactory, this.chargeService);
+                this.pricingPlanFactory,
+                this.orderFactory,
+                this.chargeService,
+                this.discountService);
     }
 
     @Test
@@ -58,9 +64,9 @@ class OrderChargeServiceTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"25, 99, 10, 2, 88, true, 8716",
-            "36, 77, 7, 3, 66, false, 5117",
-            "55, 32, 3, 2, 60, true, 1954"})
+    @CsvSource({"25, 99, 10, 2, 88, true, 21, 8716",
+            "36, 77, 7, 3, 66, false, 1, 5117",
+            "55, 32, 3, 2, 60, true, 20, 1955"})
     void able_To_Charge_An_Order(
             long baseCharge,
             long chargePerUnit,
@@ -68,6 +74,7 @@ class OrderChargeServiceTest {
             int discountFactor,
             int units,
             boolean repeat,
+            long discount,
             long expectedCharge) {
 
         // Given
@@ -79,6 +86,9 @@ class OrderChargeServiceTest {
         given(pricingPlanFactory.retrievePricingPlan()).willReturn(pricingPlan);
 
         given(orderFactory.retrieveOrder()).willReturn(order);
+
+        given(this.discountService.discount(pricingPlan, order))
+                .willReturn(discount);
 
         given(this.chargeService.chargeOrder(expectedCharge))
                 .willReturn(expectedCharge);
