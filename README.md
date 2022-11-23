@@ -18,3 +18,4 @@
 ## [Extract Function](extract-function/README.md)
 
 
+## [Slide Statements](https://memberservices.informit.com/my_account/webedition/9780135425664/html/slidestatements.html)
