@@ -60,7 +60,6 @@ class PhotosRendererTest {
 
         // Then
         assertThat(actualPhotosData).isEqualTo(expectedPhotosData);
-        System.out.println(actualPhotosData);
     }
 
 }///:~
