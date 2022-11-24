@@ -182,6 +182,7 @@
         <module>move-field</module>
         <module>move-statements</module>
         <module>slide-statements</module>
+        <module>split-loop</module>
     </modules>
 
 </project>
