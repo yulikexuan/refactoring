@@ -47,7 +47,12 @@ class PeopleTest {
         // When
         ImmutablePair<Integer, Long> statistics = People.count(people);
 
+        int actualYoungestAge = People.youngestAge(people);
+        long actualTotalSalary = People.totalSalary(people);
+
         // Then
+        assertThat(actualYoungestAge).isEqualTo(expectedYoungest);
+        assertThat(actualTotalSalary).isEqualTo(expectedTotalSalary);
         assertThat(statistics.left).isEqualTo(expectedYoungest);
         assertThat(statistics.right).isEqualTo(expectedTotalSalary);
     }

@@ -25,19 +25,20 @@ class People {
     long salary;
 
     static ImmutablePair<Integer, Long> count(@NonNull final List<People> people) {
+        return ImmutablePair.of(youngestAge(people), totalSalary(people));
+    }
 
-        int youngest = people.size() > 0 ? people.get(0).age : Integer.MAX_VALUE;
+    static int youngestAge(@NonNull final List<People> people) {
+        return people.stream()
+                .mapToInt(People::age)
+                .min()
+                .orElse(0);
+    }
 
-        long totalSalary = 0;
-
-        for (People p : people) {
-            if (p.age < youngest) {
-                youngest = p.age;
-            }
-            totalSalary += p.salary;
-        }
-
-        return ImmutablePair.of(youngest, totalSalary);
+    static long totalSalary(@NonNull final List<People> people) {
+        return people.stream()
+                .mapToLong(People::salary)
+                .sum();
     }
 
 }///:~
