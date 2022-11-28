@@ -190,6 +190,7 @@
         <module>slide-statements</module>
         <module>split-loop</module>
         <module>replace-loop-with-pipeline</module>
+        <module>remove-dead-code</module>
     </modules>
 
 </project>
