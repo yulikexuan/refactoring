@@ -4,10 +4,12 @@
 ## Resources
 
 - [Replace Loop with Pipeline](https://memberservices.informit.com/my_account/webedition/9780135425664/html/replaceloopwithpipeline.html)
-
+- [Refactoring with Loops and Collection Pipelines](https://martinfowler.com/articles/refactoring-pipelines.html)
 
 ---
 ## Motivation
+
+### The [Collection Pipelines](https://martinfowler.com/articles/collection-pipeline/) is an Appealing Alternative
 
 ### Use [Collection Pipelines](https://martinfowler.com/articles/collection-pipeline/) to Iterate Over a Collection of Objects
 > Collection Pipelines are a Programming Pattern (Stream in Java)

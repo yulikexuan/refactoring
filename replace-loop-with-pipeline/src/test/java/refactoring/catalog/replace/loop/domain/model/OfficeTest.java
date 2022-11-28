@@ -30,6 +30,7 @@ class OfficeTest {
             Porto Alegre, Brazil, +55 51 3079 3550
             Chennai, India, +91 44 660 44766
             Montreal, Canada, +1 514-123-4567
+            New York, USA, +1 646 777 9999
             """;
 
     @BeforeEach
@@ -37,7 +38,7 @@ class OfficeTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"India, 2", "Canada, 1", "USA, 1", "Brazil, 1"})
+    @CsvSource({"India, 2", "Canada, 1", "USA, 2", "Brazil, 1", "China, 1"})
     void able_To_Parse_A_String_As_Input_To_Generate_Office_Instances(
             String targetCountry, int expectedOfficeAmt) {
 
@@ -46,13 +47,13 @@ class OfficeTest {
         // When
         List<Office> offices = Office.parse(OFFICE_DATA, targetCountry);
 
-        long actualAmt = offices.stream()
+        long actualOfficeAmtForCountry = offices.stream()
                 .map(Office::country)
                 .filter(c -> targetCountry.equals(c))
                 .count();
 
         // Then
-        assertThat(actualAmt).isEqualTo(expectedOfficeAmt);
+        assertThat(actualOfficeAmtForCountry).isEqualTo(expectedOfficeAmt);
     }
 
 }///:~

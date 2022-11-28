@@ -4,14 +4,16 @@
 package refactoring.catalog.replace.loop.domain.model;
 
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.Value;
 import lombok.experimental.Accessors;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.annotation.concurrent.ThreadSafe;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -27,53 +29,37 @@ class Office {
 
     String telephone;
 
-    /*
-     *   function acquireData(input) {
-    const lines = input.split("\n");
-    let firstLine = true;
-    const result = [];
-    for (const line of lines) {
-      if (firstLine) {
-        firstLine = false;
-        continue;
-      }
-      if (line.trim() === "") continue;
-      const record = line.split(",");
-      if (record[1].trim() === "India") {
-        result.push({city: record[0].trim(), phone: record[2].trim()});
-      }
+    static Office newOffice(@NonNull final String[] fields) {
+        if (fields.length != 3) {
+            return null;
+        }
+        return Office.of(
+                fields[0].trim(),
+                fields[1].trim(),
+                fields[2].trim());
     }
-    return result;
-  }
-     */
+
     static List<Office> parse(@NonNull final String input,
                               @NonNull final String targetCountry) {
 
         String[] lines = input.split("\n");
+        String[] loopItems = ArrayUtils.subarray(
+                lines, 1, lines.length);
 
-        boolean firstLine = true;
+        return Arrays.stream(loopItems)
+                .filter     (Office::isDataLineNotBlank)
+                .map        (Office::parseDataLineToFields)
+                .filter     (fields -> targetCountry.equals(fields[1].trim()))
+                .map        (Office::newOffice)
+                .collect    (ImmutableList.toImmutableList());
+    }
 
-        List<Office> offices = Lists.newArrayList();
+    static boolean isDataLineNotBlank(@NonNull final String line) {
+        return !StringUtils.isBlank(line);
+    }
 
-        for (String line : lines) {
-            if (firstLine) {
-                firstLine = false;
-                continue;
-            }
-            if (StringUtils.isBlank(line)) {
-                continue;
-            }
-            String[] fields = line.split(",");
-            String country = fields[1].trim();
-            if (targetCountry.equals(country)) {
-                offices.add(Office.of(
-                        fields[0].trim(),
-                        fields[1].trim(),
-                        fields[2].trim()));
-            }
-        }
-
-        return offices;
+    static String[] parseDataLineToFields(@NonNull final String line) {
+        return line.split(",");
     }
 
 }///:~
