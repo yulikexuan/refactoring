@@ -22,26 +22,40 @@ public class HaggisGame {
 
     long delay;
 
-    public long getDistanceTravelled(final long time) {
+    long primaryAcc() {
+        return primaryForce / mass;
+    }
 
-        long result = 0;
 
-        long acc = primaryForce / mass;
-        long primaryTime = Math.min(time, delay());
+    long primaryVel() {
+        return primaryAcc() * delay;
+    }
 
-        result = 5 * acc * primaryTime * primaryTime / 10;
+    long fullAcc() {
+        return (primaryForce + secondaryForce) / mass;
+    }
 
-        long secondaryTime = time - delay;
+    long primaryDistance() {
+        final long primaryAcc = primaryAcc();
+        final long primaryTime = delay;
+        return calcDistance(primaryAcc, primaryTime);
+    }
+
+    public long fullDistance(final long time) {
+
+        long result = primaryDistance();
+        final long secondaryTime = time - delay;
 
         if (secondaryTime > 0) {
-            long primaryVel = acc * delay;
-            acc = (primaryForce() + secondaryForce) / mass;
-
-            result += (primaryVel * secondaryTime) +
-                    (5 * acc * secondaryTime * secondaryTime / 10);
+            result += (primaryVel() * secondaryTime) +
+                    calcDistance(fullAcc(), secondaryTime);
         }
 
         return result;
+    }
+
+    static long calcDistance(final long acc, final long time) {
+        return 5 * acc * time * time / 10;
     }
 
 }///:~
