@@ -193,6 +193,7 @@
         <module>remove-dead-code</module>
         <module>split-variable</module>
         <module>rename-field</module>
+        <module>replace-derived-variable-with-query</module>
     </modules>
 
 </project>
