@@ -192,6 +192,7 @@
         <module>replace-loop-with-pipeline</module>
         <module>remove-dead-code</module>
         <module>split-variable</module>
+        <module>rename-field</module>
     </modules>
 
 </project>
