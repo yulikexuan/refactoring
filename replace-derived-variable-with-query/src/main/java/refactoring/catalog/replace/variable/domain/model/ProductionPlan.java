@@ -4,8 +4,12 @@
 package refactoring.catalog.replace.variable.domain.model;
 
 
-import java.util.ArrayDeque;
+import com.google.common.collect.ImmutableList;
+
+import javax.annotation.concurrent.ThreadSafe;
 import java.util.Deque;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 
 /*
@@ -14,28 +18,39 @@ import java.util.Deque;
  * I see ugliness in duplication—not the common duplication of code but
  * duplication of data
  */
+@ThreadSafe
 class ProductionPlan {
 
-    long production;
+    private final long initialProduction;
 
-    Deque<Adjustment> adjustments = new ArrayDeque<>();
+    private final Deque<Adjustment> adjustments = new ConcurrentLinkedDeque<>();
 
     ProductionPlan() {
+        this.initialProduction = 0;
+    }
+
+    ProductionPlan(long initialProduction) {
+        this.initialProduction = initialProduction;
     }
 
     /*
      * Not just storing that adjustment but also using it to modify an accumulator
      */
-    public long applyAdjustment(Adjustment adjustment) {
-
+    public void applyAdjustment(Adjustment adjustment) {
         this.adjustments.push(adjustment);
-        this.production += adjustment.amount();
-
-        return this.production;
     }
 
     public long production() {
-        return this.production;
+        return this.calculatedProduction();
+    }
+
+    public List<Adjustment> adjustments() {
+        return ImmutableList.copyOf(this.adjustments);
+    }
+
+    long calculatedProduction() {
+        return this.initialProduction + this.adjustments.stream()
+                .mapToLong(Adjustment::amount).sum();
     }
 
 }///:~
