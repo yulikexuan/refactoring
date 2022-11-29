@@ -32,7 +32,7 @@ final class OrganizationServiceImpl implements OrganizationService {
             @NonNull final String suffix) {
 
         return organizations.stream()
-                .filter(org -> org.name().endsWith(suffix))
+                .filter(org -> org.title().endsWith(suffix))
                 .collect(ImmutableSet.toImmutableSet());
     }
 

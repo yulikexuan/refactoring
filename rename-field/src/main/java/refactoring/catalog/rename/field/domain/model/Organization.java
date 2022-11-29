@@ -19,7 +19,7 @@ import javax.annotation.concurrent.ThreadSafe;
 public class Organization {
 
     @NonNull
-    String name;
+    String title;
 
     @NonNull
     String country;
