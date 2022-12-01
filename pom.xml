@@ -195,6 +195,7 @@
         <module>rename-field</module>
         <module>replace-derived-variable-with-query</module>
         <module>change-reference-to-value</module>
+        <module>decompose-conditional</module>
     </modules>
 
 </project>
