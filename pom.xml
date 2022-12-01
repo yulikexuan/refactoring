@@ -196,6 +196,7 @@
         <module>replace-derived-variable-with-query</module>
         <module>change-reference-to-value</module>
         <module>decompose-conditional</module>
+        <module>consolidate-conditional-expression</module>
     </modules>
 
 </project>
