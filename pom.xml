@@ -197,6 +197,7 @@
         <module>change-reference-to-value</module>
         <module>decompose-conditional</module>
         <module>consolidate-conditional-expression</module>
+        <module>replace-nested-conditional-with-guard-clauses</module>
     </modules>
 
 </project>
