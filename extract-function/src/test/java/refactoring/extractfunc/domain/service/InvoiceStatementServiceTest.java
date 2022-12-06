@@ -57,7 +57,7 @@ class InvoiceStatementServiceTest {
     void able_To_Print_Statement_Of_An_Invoice() {
         String stmt = this.invoiceStatementService.printOwing(
                 this.invoiceStatementService.convertInvoiceToInvoiceDto(invoice));
-        assertThat(stmt).isEqualTo(this.expectedInvoiceStatement);
+        assertThat(stmt).isEqualToIgnoringNewLines(this.expectedInvoiceStatement);
     }
 
 }

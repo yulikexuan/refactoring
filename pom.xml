@@ -198,6 +198,7 @@
         <module>decompose-conditional</module>
         <module>consolidate-conditional-expression</module>
         <module>replace-nested-conditional-with-guard-clauses</module>
+        <module>replace-conditional-with-polymorphism</module>
     </modules>
 
 </project>
