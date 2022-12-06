@@ -108,7 +108,7 @@ class StatementServiceTest {
             String stmt = plainTextStmtService.getStatement(this.invoiceDto);
 
             // Then
-            assertThat(stmt).isEqualTo(expectedStmt);
+            assertThat(stmt).isEqualToIgnoringNewLines(expectedStmt);
         }
 
         @Test
