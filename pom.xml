@@ -199,6 +199,7 @@
         <module>consolidate-conditional-expression</module>
         <module>replace-nested-conditional-with-guard-clauses</module>
         <module>replace-conditional-with-polymorphism</module>
+        <module>introduce-special-case</module>
     </modules>
 
 </project>
