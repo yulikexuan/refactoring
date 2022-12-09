@@ -19,3 +19,10 @@
 
 
 ## [Slide Statements](https://memberservices.informit.com/my_account/webedition/9780135425664/html/slidestatements.html)
+
+
+## [Introduce Assertion](https://memberservices.informit.com/my_account/webedition/9780135425664/html/introduceassertion.html)
+- ### Applying Assertions is a Valuable Form of Communication
+- ### Assertions are also Handy for Debugging
+  - Their Communication Value Means Devs are Inclined to Leave Them In 
+    - once they have fixed the error they are chasing
