@@ -201,6 +201,7 @@
         <module>replace-conditional-with-polymorphism</module>
         <module>introduce-special-case</module>
         <module>replace-control-flag-with-break</module>
+        <module>separate-query-from-modifier</module>
     </modules>
 
 </project>
