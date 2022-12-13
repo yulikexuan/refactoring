@@ -203,6 +203,7 @@
         <module>replace-control-flag-with-break</module>
         <module>separate-query-from-modifier</module>
         <module>parameterize-function</module>
+        <module>remove-flag-argument</module>
     </modules>
 
 </project>
