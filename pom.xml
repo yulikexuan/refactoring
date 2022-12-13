@@ -204,6 +204,7 @@
         <module>separate-query-from-modifier</module>
         <module>parameterize-function</module>
         <module>remove-flag-argument</module>
+        <module>preserve-whole-object</module>
     </modules>
 
 </project>
