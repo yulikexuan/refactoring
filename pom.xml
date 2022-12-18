@@ -207,6 +207,7 @@
         <module>preserve-whole-object</module>
         <module>replace-parameter-with-query</module>
         <module>replace-query-with-parameter</module>
+        <module>remove-setting-method</module>
     </modules>
 
 </project>
