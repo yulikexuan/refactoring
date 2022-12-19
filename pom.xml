@@ -209,6 +209,7 @@
         <module>replace-query-with-parameter</module>
         <module>remove-setting-method</module>
         <module>replace-constructor-with-factory</module>
+        <module>replace-function-with-command</module>
     </modules>
 
 </project>
