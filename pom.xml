@@ -210,6 +210,7 @@
         <module>remove-setting-method</module>
         <module>replace-constructor-with-factory</module>
         <module>replace-function-with-command</module>
+        <module>replace-command-with-function</module>
     </modules>
 
 </project>
