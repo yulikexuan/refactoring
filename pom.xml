@@ -213,6 +213,7 @@
         <module>replace-command-with-function</module>
         <module>return-modified-value</module>
         <module>replace-error-code-with-exception</module>
+        <module>replace-exception-with-precheck</module>
     </modules>
 
 </project>
