@@ -214,6 +214,7 @@
         <module>return-modified-value</module>
         <module>replace-error-code-with-exception</module>
         <module>replace-exception-with-precheck</module>
+        <module>pull-up-method</module>
     </modules>
 
 </project>
