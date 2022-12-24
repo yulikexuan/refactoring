@@ -216,6 +216,7 @@
         <module>replace-exception-with-precheck</module>
         <module>pull-up-method</module>
         <module>pull-up-constructor-body</module>
+        <module>replace-type-code-with-subclasses</module>
     </modules>
 
 </project>
