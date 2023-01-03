@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 @Accessors(fluent = true)
 @ToString
-public class EmployeeRefactor {
+public abstract sealed class EmployeeRefactor permits Engineer, Manager, Salesman {
 
     static final List<String> ALL_EMPLOYEE_TYPES =
             List.of("engineer", "manager", "salesman");
@@ -28,16 +28,8 @@ public class EmployeeRefactor {
 
     EmployeeRefactor(String name, String type) {
 
-        this.validateType(type);
-
         this.name = name;
         this.type = type;
-    }
-
-    private void validateType(String type) {
-        if (!ALL_EMPLOYEE_TYPES.contains(type)) {
-            throw new InvalidParameterException();
-        }
     }
 
     public static EmployeeRefactor of(@NonNull final String name,
@@ -47,7 +39,7 @@ public class EmployeeRefactor {
             case "engineer" -> new Engineer(name);
             case "manager" -> new Manager(name);
             case "salesman" -> new Salesman(name);
-            default -> new EmployeeRefactor(name, type);
+            default -> throw new InvalidParameterException();
         };
     }
 

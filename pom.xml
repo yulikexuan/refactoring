@@ -217,6 +217,7 @@
         <module>pull-up-method</module>
         <module>pull-up-constructor-body</module>
         <module>replace-type-code-with-subclasses</module>
+        <module>remove-subclass</module>
     </modules>
 
 </project>
