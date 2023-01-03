@@ -218,6 +218,7 @@
         <module>pull-up-constructor-body</module>
         <module>replace-type-code-with-subclasses</module>
         <module>remove-subclass</module>
+        <module>extract-superclass</module>
     </modules>
 
 </project>
