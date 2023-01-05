@@ -219,6 +219,8 @@
         <module>replace-type-code-with-subclasses</module>
         <module>remove-subclass</module>
         <module>extract-superclass</module>
+        <module>collapse-hierarchy</module>
+        <module>replace-subclass-with-delegate</module>
     </modules>
 
 </project>
