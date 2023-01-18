@@ -10,7 +10,7 @@
 
 ### As the hierarchy evolves
 - #### If sometimes found out that a class and its parent are 
-  - no longer different enough to be worth keeping separate
+  - No Longer Different Enough to be Worth Keeping Separate
   - #### At this point, Merge Them Together
 
 

@@ -25,21 +25,21 @@
 
 ### Decide how to split the responsibilities of the class
 
-### Create a new child class to express the split-off (分離的) responsibilities
-- Rename the parent class 
-  - if the responsibilities of the original parent class no longer match its name
+### Create a new class to express the split-off (分離的) responsibilities
+- Rename the original big class 
+  - if the responsibilities of the original big class no longer match its name
 
-### Create an instance of the child class when constructing the parent 
-- add a link from parent to child
+### Create an instance of the new class when constructing the original big class 
+- add a link from the original big class to new class
 
 ### Use [Move Field](https://memberservices.informit.com/my_account/webedition/9780135425664/html/movefield.html) on each field you wish to move
 
-### Use [Move Function](https://memberservices.informit.com/my_account/webedition/9780135425664/html/movefunction.html) to move methods to the new child
+### Use [Move Function](https://memberservices.informit.com/my_account/webedition/9780135425664/html/movefunction.html) to move methods to the new class
 - Start with lower-level methods (those being called rather than calling)
 
 ### Review the interfaces of both classes
 - remove unneeded methods 
 - change names to better fit the new circumstances
 
-### Decide whether to expose the new child
-- If so, consider applying [Change Reference to Value](https://memberservices.informit.com/my_account/webedition/9780135425664/html/changereferencetovalue.html) to the child class
+### Decide whether to expose the new class
+- If so, consider applying [Change Reference to Value](https://memberservices.informit.com/my_account/webedition/9780135425664/html/changereferencetovalue.html) to the new class

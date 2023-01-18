@@ -1,5 +1,10 @@
 # Refactoring 
 
+---
+
+## ___[Common Refactorings for Smells](smells_common_refactorings.md)___
+
+--- 
 
 ## [Chapter 1 - The First Refactoring Example](ch01-a-first-example/README.md)
 

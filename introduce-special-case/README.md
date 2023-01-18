@@ -7,10 +7,6 @@
 - [Introduce Special Case](https://memberservices.informit.com/my_account/webedition/9780135425664/html/introducespecialcase.html)
 
 ---
-### A Widespread Testing for a Special Case, Plus a Common Response
-- ### Is What Tells that It is Time FOR a Special Case Object
-
----
 
 ## Motivation
 
