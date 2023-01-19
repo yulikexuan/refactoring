@@ -13,7 +13,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ch01-a-first-example</artifactId>
+    <artifactId>ch01-init</artifactId>
     <packaging>jar</packaging>
     <name>ch01-a-first-example</name>
 

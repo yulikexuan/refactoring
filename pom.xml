@@ -222,6 +222,7 @@
         <module>collapse-hierarchy</module>
         <module>replace-subclass-with-delegate</module>
         <module>replace-superclass-with-delegate</module>
+        <module>ch01-init</module>
     </modules>
 
 </project>
